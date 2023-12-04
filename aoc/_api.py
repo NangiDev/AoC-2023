@@ -2,10 +2,21 @@ from typing import Union
 import requests
 from pathlib import Path
 from datetime import datetime
+import time
+import atexit
+
+START_TIME = time.time()
+def cleanup():
+    end_time = time.time()
+    elapsed_time = end_time - START_TIME
+    print("==========================")
+    print(f"Elapsed time: {elapsed_time:.2f} seconds")
+    print("==========================")
+
+atexit.register(cleanup)
 
 _SESSION_FILE_NAME = "session.txt"
 _YEAR_FILE_NAME = "year.txt"
-
 
 def _set_read_file(filename: str, default: str = None) -> Union[str, None]:
     try:
