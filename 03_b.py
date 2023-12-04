@@ -18,8 +18,8 @@ def find_kog(char_map, x, y, kog_coords):
     return found
 
 if __name__ == "__main__":
-    data = get_test_input(PART, DAY).splitlines()
     data = get_input(DAY).splitlines()
+    data = get_test_input(PART, DAY).splitlines()
     
     char_map = {}
     for y, line in enumerate(data):
@@ -50,8 +50,7 @@ if __name__ == "__main__":
                 if has_kog and len(number) > 0:
                     for coord in kog_coords:
                         try:
-                            if number not in kog_map[coord]:
-                                kog_map[coord].append(number)
+                            kog_map[coord].append(number)
                         except:
                             kog_count += 1
                             kog_map[coord] = [number]
@@ -74,9 +73,6 @@ if __name__ == "__main__":
     total = 0
     for k in kog_map:
         if len(kog_map[k]) == 2:
-            gear_ratio = 1
-            for v in kog_map[k]:
-                gear_ratio *= int(v)
-            total += gear_ratio
+            total += int(kog_map[k][0]) * int(kog_map[k][1])
 
 print(total)
