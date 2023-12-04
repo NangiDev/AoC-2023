@@ -1,26 +1,19 @@
-"""
-Advent of Code 2023 - Day 1 - Part 2
-"""
-
-#!/usr/bin/env python
-
-import sys
-import os
+from aoc import get_input, get_test_input
 import re
+import sys
 
-INPUT = "testdata.txt"
-INPUT = "data.txt"
-
-cd = os.path.dirname(__file__)
-
-STRING_ARRAY = ["zero", "one", "two", "three",
-                "four", "five", "six", "seven", "eight", "nine"]
+DAY = 1
+PART = "b"
 
 if __name__ == "__main__":
+    data = get_test_input(PART, DAY).splitlines()
+    data = get_input(DAY).splitlines()
 
-    TOTAL = 0
-    with open(f"{cd}/{INPUT}", "r", encoding="utf-8") as f:
-        for line in f:
+    STRING_ARRAY = ["zero", "one", "two", "three",
+                "four", "five", "six", "seven", "eight", "nine"]
+
+    total = 0
+    for line in data:
             MIN_INDEX = sys.maxsize
             MAX_INDEX = -1
             FIRST_NUM = 0
@@ -58,6 +51,6 @@ if __name__ == "__main__":
                         LAST_NUM = num_int
 
             # print(f"{FIRST_NUM}{LAST_NUM}")
-            TOTAL += int(f"{FIRST_NUM}{LAST_NUM}")
+            total += int(f"{FIRST_NUM}{LAST_NUM}")
 
-    print(TOTAL)
+    print(total)
